@@ -7,11 +7,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+public class ListingPage {
 
-public class Listings {
+    private String name;
 
     @NotNull(message = "Field cannot be empty")
     private String country;
@@ -25,4 +27,6 @@ public class Listings {
     @Min(value = 1, message = "Cannot be less than 1")
     @Max(value = 10000, message = "Cannot be more than 10")
     private Double price;
+
+    private String picture_url;
 }

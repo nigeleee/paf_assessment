@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">Back</a>
+    <!-- <p>Listings for <span th:text = "${result.country}"></span></p> -->
+    <div th:each = "result : ${listings}">
+            <table>
+                <a href=""><button type = "submit">Details</button></a>
+                <tr>
+                    <td>
+                        <label for="name">Name</label>
+                        <span th:text = "*{result.name}"></span>
+                    </td>
+                <tr>
+                    <td>
+                        <label for="price">Price</label>
+                        <span th:text = "*{result.price}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="image">Image</label>
+                        <img th:src="@{${result.picture_url}}">
+                    </td>
+                </tr>
+            </table>
+    </div>    
+</body>
+</html>
