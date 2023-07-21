@@ -7,11 +7,8 @@ import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -41,7 +38,7 @@ public class ListingsController {
 		List<Document> getListings = service.getAccomResult(country, accommodates, price);
 		List<ListingPage> accomList = new ArrayList<>();
 		for (Document doc : getListings) {
-			ListingPage list = service.docToDetails(doc);
+			ListingPage list = service.docToResults(doc);
 
 			accomList.add(list);
 		}
@@ -54,17 +51,32 @@ public class ListingsController {
 			return "view2";
 	}
 
-	
-	//TODO: Task 3
-
-
-	//TODO: Task 4
-	
-
-	//TODO: Task 5
-
-
 	}
 
-}
+		@GetMapping("details") 
+		public String accomDetails(@PathVariable String id, @RequestParam String country, @RequestParam int accommodates, @RequestParam double price, Model model) {
+			if(service.checkIfIdExists(id) == null){
+				return "view 2";
+			} else {
+				List<Document> getDetails = service.getAccomDetails(id, accommodates, price);
+				List<ListingDetails> details = new ArrayList<>();
+				for (Document doc : getDetails) {
+				ListingDetails list = service.docToDetails(doc);
+
+				details.add(list);
+		}
+
+
+		
+			model.addAttribute("details", details);
+			return "view2";
+		
+			}
+
+			
+		}
+	}		
+	
+
+
 

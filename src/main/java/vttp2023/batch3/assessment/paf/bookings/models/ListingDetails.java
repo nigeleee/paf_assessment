@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class ListingDetails {
-    private String id;
+    private String _id;
     private String description;
     private String address;
     private String picture_url;
