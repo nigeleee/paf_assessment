@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+</head>
+<body>
+    <h1>Search Our Accomodations</h1>
+    <form th:object="${listings}" th:action="@{/search}" method="get">
+        <table>
+              <tr>
+                  <td> 
+                      <label for="country">Country:</label> 
+                  </td>
+                  <td>
+                      <input type="text" th:field = "*{country}" size="30">
+                      <br>
+                      <!-- <span class = "error" th:if = "${#fields.hasErrors('country')}" th:errors = "*{country}" style = "color: red;"></span>     -->
+                  </td>
+                  <td> 
+                    <label for="accommodates">Number of person:</label> 
+                </td>
+                <td>
+                    <input type="text" th:field = "*{accommodates}" size="30">
+                    <br>
+                    <!-- <span class = "error" th:if = "${#fields.hasErrors('accommodates')}" th:errors = "*{accommodates}" style = "color: red;"></span>     -->
+                </td>
+                <td> 
+                    <!-- <label for="price">Price Range:</label> 
+                </td>
+                <td>
+                    <label for="min">Min:</label><input type="number" th:field = "*{number}"><label for="max">Max:</label><input type="number" th:field = "*{number}">
+                    <br>
+                    <span class = "error" th:if = "${#fields.hasErrors('number')}" th:errors = "*{country}" style = "color: red;"></span>    
+                </td> -->
+              </tr>
+        </table>
+    </form>              
+</body>
+</html>
